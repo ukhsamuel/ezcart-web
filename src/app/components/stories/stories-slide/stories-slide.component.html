@@ -1,0 +1,11 @@
+
+    <div class="bg-slide md:px-80">
+        <p-carousel [value]="products" [showNavigators]="true" [showIndicators]="false" [numVisible]="9" [numScroll]="1" [circular]="false" [responsiveOptions]="responsiveOptions">
+            <ng-template let-product pTemplate="item">
+                <div class="space-y-1 cursor-pointer hover:opacity-80 items-center flex flex-col justify-center mr-2">
+                <img src="assets/imgs/guy.jpg" class="!w-14 !h-14 rounded-full border-2 border-orange-300"  alt="story">
+                <p class="text-black">angleeee</p>
+                </div>
+            </ng-template>
+        </p-carousel>
+    </div>

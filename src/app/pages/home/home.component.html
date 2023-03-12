@@ -1,0 +1,90 @@
+<div class="flex flex-1 flex-col space-y-4  bg-white">
+    <!-- <div class="card">
+        <p-carousel [value]="products" [numVisible]="3" [numScroll]="3" [circular]="false" [responsiveOptions]="responsiveOptions">
+            <ng-template pTemplate="header">
+                <h5>Basic</h5>
+            </ng-template>
+            <ng-template let-product pTemplate="item">
+                <div class="product-item">
+                    <div class="product-item-content">
+                        <div class="mb-3">
+                            <img src="https://primefaces.org/cdn/primeng/images/demo/product/{{product.image}}" [alt]="product.name" class="product-image" />
+                        </div>
+                        <div>
+                            <h4 class="mb-1">{{product.name}}</h4>
+                            <h6 class="mt-0 mb-3">${{product.price}}</h6>
+                            <span [class]="'product-badge status-'+product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span>
+                            <div class="car-buttons mt-5">
+                                <p-button type="button" styleClass="p-button p-button-rounded mr-2" icon="pi pi-search"></p-button>
+                                <p-button type="button" styleClass="p-button-success p-button-rounded mr-2" icon="pi pi-star-fill"></p-button>
+                                <p-button type="button" styleClass="p-button-help p-button-rounded" icon="pi pi-cog"></p-button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </p-carousel>
+    </div>
+
+    <div class="cared ad-items py-4">
+        <p-carousel [value]="products" [showNavigators]="false" [numVisible]="3" [numScroll]="3" [circular]="false" [responsiveOptions]="responsiveOptions">
+            <ng-template let-product pTemplate="item">
+                <div class="ad-item">
+                    <home-ad-card></home-ad-card>
+                </div>
+            </ng-template>
+        </p-carousel>
+    </div> -->
+    <div>
+        <stories-slide></stories-slide>
+    </div>
+    <div class="bg-slide  md:py-4">
+        <p-carousel [value]="products" [showNavigators]="false"  [showIndicators]="false" [numVisible]="1" [numScroll]="1" [circular]="false" [responsiveOptions]="bgSlideresponsiveOptions">
+            <ng-template let-product pTemplate="item">
+                <div class="ad-item">
+                    <bg-banner></bg-banner>
+                </div>
+            </ng-template>
+        </p-carousel>
+    </div>
+    <div class="ad-items md:py-4">
+        <p-carousel [value]="posts" [showNavigators]="false" [numVisible]="3" [numScroll]="3" [circular]="false" [responsiveOptions]="responsiveOptions">
+            <ng-template let-product pTemplate="item">
+                <div class="ad-item">
+                    <home-ad-card></home-ad-card>
+                </div>
+            </ng-template>
+        </p-carousel>
+    </div>
+    <div class="cared ad-items md:py-4">
+        <p-carousel [value]="posts"  [showNavigators]="true" [showIndicators]="false" [numVisible]="3" [numScroll]="3" [circular]="false" [responsiveOptions]="responsiveOptions">
+            <ng-template let-product pTemplate="item">
+                <div class="ad-item">
+                    <post [passedData]="product"></post>
+                </div>
+            </ng-template>
+        </p-carousel>
+    </div>
+
+    <page-divider title="Top Choice"></page-divider>
+    <div class="cared ad-items md:py-4">
+        <p-carousel [value]="stores" [showNavigators]="true" [showNavigators]="true" [showIndicators]="false" [numVisible]="5" [numScroll]="3" [circular]="false" [responsiveOptions]="responsiveOptions">
+            <ng-template let-store pTemplate="item">
+                <div class="ad-item">
+                    <store-card [passedData]="store"></store-card>
+                </div>
+            </ng-template>
+        </p-carousel>
+    </div>
+    <page-divider title="Recommended For You 😍"></page-divider>
+    <div class="cared ad-items py-4">
+        <p-carousel [value]="_products" [showNavigators]="true" [showNavigators]="true" [showIndicators]="false" [numVisible]="6" [numScroll]="3" [circular]="false" [responsiveOptions]="responsiveOptions">
+            <ng-template let-product pTemplate="item">
+                <div class="ad-item">
+                    <product-card [passedData]="product"></product-card>
+                </div>
+            </ng-template>
+        </p-carousel>
+    </div>
+</div>
+

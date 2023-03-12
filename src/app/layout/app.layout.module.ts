@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InputTextModule } from 'primeng/inputtext';
@@ -18,6 +17,13 @@ import { AppConfigModule } from './config/config.module';
 import { AppSidebarComponent } from "./app.sidebar.component";
 import { AppLayoutComponent } from "./app.layout.component";
 
+import { DialogModule } from 'primeng/dialog';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ToastModule } from 'primeng/toast';
+import { MessagesModule } from 'primeng/messages';
+import { MessageModule } from 'primeng/message';
+
 @NgModule({
     declarations: [
         AppMenuitemComponent,
@@ -30,16 +36,22 @@ import { AppLayoutComponent } from "./app.layout.component";
     imports: [
         BrowserModule,
         FormsModule,
+        ReactiveFormsModule,
         HttpClientModule,
         BrowserAnimationsModule,
         InputTextModule,
         SidebarModule,
+		ToastModule,
         BadgeModule,
         RadioButtonModule,
         InputSwitchModule,
         RippleModule,
         RouterModule,
-        AppConfigModule
+        AppConfigModule,
+        OverlayPanelModule,
+		MessagesModule,
+		MessageModule,
+        DialogModule
     ],
     exports: [AppLayoutComponent]
 })

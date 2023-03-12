@@ -22,6 +22,24 @@ export class AppLayoutComponent implements OnDestroy {
     @ViewChild(AppTopBarComponent) appTopbar!: AppTopBarComponent;
 
     constructor(public layoutService: LayoutService, public renderer: Renderer2, public router: Router) {
+        // this.hideMenu();
+        console.log(89886)
+        console.log('1>>',this.layoutService.state.staticMenuDesktopInactive)
+        console.log('2>>', this.layoutService.config.menuMode)
+        console.log('3>>',  this.layoutService.state.staticMenuDesktopInactive && this.layoutService.config.menuMode === 'static')
+        
+
+        // this.layoutService.state.overlayMenuActive = false;
+        // this.layoutService.state.staticMenuMobileActive = false;
+        // this.layoutService.state.menuHoverActive = false;
+        // this.layoutService.state.staticMenuDesktopInactive = false;
+        if (this.menuOutsideClickListener) {
+            this.menuOutsideClickListener();
+            this.menuOutsideClickListener = null;
+        }
+        this.unblockBodyScroll();
+
+        
         this.overlayMenuOpenSubscription = this.layoutService.overlayOpen$.subscribe(() => {
             if (!this.menuOutsideClickListener) {
                 this.menuOutsideClickListener = this.renderer.listen('document', 'click', event => {
@@ -101,6 +119,7 @@ export class AppLayoutComponent implements OnDestroy {
             'layout-theme-dark': this.layoutService.config.colorScheme === 'dark',
             'layout-overlay': this.layoutService.config.menuMode === 'overlay',
             'layout-static': this.layoutService.config.menuMode === 'static',
+            // 'layout-static-inactive': true,
             'layout-static-inactive': this.layoutService.state.staticMenuDesktopInactive && this.layoutService.config.menuMode === 'static',
             'layout-overlay-active': this.layoutService.state.overlayMenuActive,
             'layout-mobile-active': this.layoutService.state.staticMenuMobileActive,

@@ -1,0 +1,25 @@
+
+    <div class="bg-white cursor-pointer post-card flex mr-3 flex-row shadow-lg space-x-3 shadow-zinc-100 w-fdull rounded-3xl p-4 hover:opacity-75">
+        <div class="w-32  justify-center items-center align-middle">
+          <img
+                class="w-32  h-32 rounded-2xl"
+                src="{{passedData.photo}}"
+                alt=""
+              />
+        </div>
+        <div class="space-y-4 justify-between">
+          <p
+            class="text-black text-xl font-semibold line-clamp-1"
+          >
+            {{passedData.title}}
+          </p>
+          <p class="text-gray-800 text-base  line-clamp-2">
+            {{passedData.description}}
+          </p>
+          <div class="flex space-x-2 flex-row items-center align-middle">
+            <span class="text-orange-400 text-base font-semibold">Read More </span>
+            <span class="text-gray-600 text-xs font-extralight">|</span>
+            <i class="pi pi-heart"></i>
+          </div>
+        </div>
+      </div>

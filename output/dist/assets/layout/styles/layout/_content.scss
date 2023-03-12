@@ -1,0 +1,18 @@
+.layout-main-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: space-between;
+    padding: 7rem 2rem 2rem 4rem;
+    transition: margin-left $transitionDuration;
+}
+@media only screen and (max-width: 600px) {
+    .layout-main-container {
+        padding: 12rem 0rem 0rem 0rem;
+        // padding: 12rem 2rem 2rem 4rem;
+    }
+}
+
+.layout-main {
+    flex: 1 1 auto;
+}

@@ -1,0 +1,272 @@
+<div *ngIf="store">
+    <div>
+        <div class="relative">
+            <img
+                class="w-full rounded-3xl h-28 md:h-72"
+                src="assets/imgs/baby.png"
+                alt=""
+            />
+            <span class="absolute right-8 top-4">
+                <i class="pi pi-heart text-2xl text-white"></i>
+            </span>
+            <span class="absolute right-20 top-4">
+                <i class="pi pi-send text-2xl text-white"></i>
+            </span>
+
+            <div
+                class="absolute -bottom-12 bg-red flex items-center justify-center w-full"
+            >
+                <div
+                    class="bg-white flex items-center justify-center h-32 w-32 border-4 border-orange-400 rounded-full"
+                >
+                    <img
+                        class="w-16 h-16"
+                        src="{{store.photo}}"
+                        alt=""
+                    />
+                </div>
+            </div>
+        </div>
+        <div class="mt-20 space-y-2">
+            <p class="font-bold text-3xl text-black text-center">
+                {{store.title}}
+            </p>
+
+            <!-- <p-progressBar [value]="90"></p-progressBar> -->
+            <!-- <ngx-star-rating  [(ngModel)]="rating" [id]="'rating'"></ngx-star-rating> -->
+            <div
+                class="flex space-x-2 w-56 justify-between mx-auto flex-row items-center relative align-middle"
+            >
+                <span>
+                    <i class="pi pi-map-marker text-sm text-orange-400"></i>
+                </span>
+                <span class="text-gray-700 text-xs font-normal"
+                    >{{store.location}}
+                </span>
+                <span>
+                    <i class="pi pi-star text-sm text-orange-400"></i>
+                </span>
+                <span class="text-gray-700 text-xs font-normal"
+                    >{{store.ratings}} ({{store.total}})
+                </span>
+            </div>
+            <p class="font-normal text-base text-gray-500 text-center">
+                Our commitment is to always source and work alongside brands
+                which are environmentally- sustainable whilst not compromising
+                on adventure and aesthetics for children. Our mission is to
+                become the preferred choice for luxury and high-quality items
+                for children.
+            </p>
+
+            <div
+                class="flex space-x-2 w-36 mx-auto flex-row items-center relative align-middle"
+            >
+                <span>
+                    <i class="pi pi-envelope text-sm text-orange-400"></i>
+                </span>
+                <span class="text-gray-700 text-xs font-normal"
+                    >Contact Seller
+                </span>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-4 gap-2 mt-20">
+            <div  *ngFor="let product of _products">
+                <product-card-wide [passedData]="product"></product-card-wide>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- contact modal -->
+<!-- <div class="card">
+    <p-dialog
+        [(visible)]="display"
+        [modal]="true"
+        showEffect="fade"
+        [style]="{ width: '12vw', height: '36rem' }"
+        [breakpoints]="{ '960px': '75vw' }"
+    >
+        <div class="flex flex-col space-y-6">
+            <p class="font-bold text-black text-xl text-center">Log in</p>
+            <div class="flex flex-col space-y-4">
+                <button
+                    class="w-full text-left px-4 space-x-4 text-black font-semibold h-14 rounded-2xl shadow-inner shadow-gray-200"
+                >
+                    <i class="pi pi-telegram text-orange-400 mr-2"></i>
+                    Chat with Seller
+                </button>
+                <button
+                    class="w-full text-left px-4 space-x-4 text-black font-semibold h-14 rounded-2xl shadow-inner shadow-gray-200"
+                >
+                    <i class="pi pi-whatsapp text-orange-400 mr-2"></i>
+                    WhatsApp
+                </button>
+                <button
+                    class="w-full text-left px-4 space-x-4 text-black font-semibold h-14 rounded-2xl shadow-inner shadow-gray-200"
+                >
+                    <i class="pi pi-instagram text-orange-400 mr-2"></i>
+                    Instagram
+                </button>
+                <button
+                    class="w-full text-left px-4 space-x-4 text-black font-semibold h-14 rounded-2xl shadow-inner shadow-gray-200"
+                >
+                    <i class="pi pi-facebook text-orange-400 mr-2"></i>
+                    Facebook
+                </button>
+                <button
+                    class="w-full text-left px-4 space-x-4 text-black font-semibold h-14 rounded-2xl shadow-inner shadow-gray-200"
+                >
+                    <i class="pi pi-twitter text-orange-400 mr-2"></i>
+                    Twitter
+                </button>
+                <button
+                    class="w-full text-left px-4 space-x-4 text-black font-semibold h-14 rounded-2xl shadow-inner shadow-gray-200"
+                >
+                    <i class="pi pi-circle-fill text-orange-400 mr-2"></i>
+                    TikTok
+                </button>
+            </div>
+            <ng-template pTemplate="footer">
+                <button
+                    pButton
+                    icon="pi pi-check"
+                    (click)="display = false"
+                    label="Ok"
+                    class="p-button-outlined"
+                ></button>
+            </ng-template>
+        </div>
+    </p-dialog>
+</div> -->
+
+<!-- <div class="card">
+    <p-dialog
+        [(visible)]="display"
+        [modal]="true"
+        showEffect="fade"
+        [style]="{ width: '22vw', height: '36rem' }"
+        [breakpoints]="{ '960px': '75vw' }"
+    >
+        <div class="flex flex-col space-y-6">
+            <div
+                class="flex flex-1 flex-row h-40 border-gray-200 "
+            >
+                <div
+                    class="flex space-y-2 flex-col basis-6/12 p-4 items-center border-r border-gray-200 "
+                >
+                    <p class="font-bold text-black text-5xl">4.0</p>
+                    <p class="text-sm">(4.8k reviews)</p>
+                </div>
+                <div class="flex basis-6/12">
+                    <rating-bars></rating-bars>
+                </div>
+            </div>
+            <user-review></user-review>
+            <user-review></user-review>
+            <user-review></user-review>
+            <user-review></user-review>
+        </div>
+    </p-dialog>
+</div> -->
+<!-- <div class="card">
+    <p-dialog
+        [(visible)]="display"
+        [modal]="true"
+        showEffect="fade"
+        [style]="{ width: '22vw', height: '36rem' }"
+        [breakpoints]="{ '960px': '75vw' }"
+    >
+        <div class="flex flex-col space-y-4">
+            <div class="flex flex-1 flex-col">
+                <img
+                    class="w-full rounded-xl h-28 md:h-72"
+                    src="assets/imgs/baby.png"
+                    alt=""
+                />
+            </div>
+            <div class="flex flex-row">
+                <div class="basis-10/12">
+                    <p class="font-bold">Los Angeles Play Mat (Reversible)</p>
+                </div>
+                <div class="basis-2/12">
+                    <span
+                        class="flex !h-8 !w-8 items-center justify-center border border-gray-300 rounded-xl"
+                    >
+                        <i class="pi pi-send text-base text-black"></i>
+                    </span>
+                </div>
+            </div>
+            <div
+                class="flex space-x-2 flex-row items-center relative align-middle border-b border-gray-200 "
+            >
+                <span>
+                    <i class="pi pi-star text-sm text-orange-400"></i>
+                </span>
+                <span class="text-black text-lg font-bold">4.8 </span>
+                <span class="text-gray-700 text-xs font-normal"
+                    >(4.8k reviews)
+                </span>
+            </div>
+            <div>
+                <p>Your baby is strolling down sunny beaches, into sunset boulevard and hanging out in Hollywood all while you sip your coffee in the comfort...</p>
+            </div>
+            <div>
+                <text-area></text-area>
+            </div>
+            <div>
+                <primary-button></primary-button>
+            </div>
+        </div>
+    </p-dialog>
+</div> -->
+<!-- <div class="card">
+    <p-dialog
+        [(visible)]="display"
+        [modal]="true"
+        showEffect="fade"
+        [style]="{ width: '22vw', height: '36rem' }"
+        [breakpoints]="{ '960px': '75vw' }"
+    >
+        <div class="flex flex-col">
+            <div class="flex flex-row h-24 py-4 border-b border-gray-200">
+                <div class="basis-6/12">
+                    <p class="text-lg font-semibold mb-2">Monday - Friday</p>
+                </div>
+                <div class="basis-1/12">
+                    <p class="text-black font-light">:</p>
+                </div>
+                <div class="basis-5/12">
+                    <div class="text-lg font-semibold text-orange-400 mb-2">
+                        <p>10:00 - 22.00</p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-row h-24 py-4">
+                <div class="basis-6/12">
+                    <p class="text-lg font-semibold">Saturday - Sunday</p>
+                </div>
+                <div class="basis-1/12">
+                    <p class="text-black font-light">:</p>
+                </div>
+                <div class="basis-5/12">
+                    <div class="text-lg font-semibold text-orange-400 mb-2">
+                        <p>12:00 - 20.00</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="py-4">
+                    <p class="font-bold text-2xl">Address</p>
+                </div>
+
+                <div class="flex-row">
+                    <i class="pi pi-heart text-red-400"></i>
+                    <p class="text-xl ml-2 text-gray-800">
+                        Ikoyi, Lagos, Nigeria.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </p-dialog>
+</div> -->

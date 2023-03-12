@@ -1,29 +1,221 @@
-<div class="layout-topbar">
-    <a class="layout-topbar-logo" routerLink="">
-        <img src="assets/layout/images/{{layoutService.config.colorScheme === 'light' ? 'logo-dark' : 'logo-white'}}.svg" alt="logo">
-        <span>SAKAI</span>
-    </a>
+<div class="flex flex-col space-y-2">
+    <div
+        class="layout-topbar space-x-1 bg-whsite rounded-none md:bg-gray-50 md:space-x-4 md:justify-between"
+    >
+        <div class="flex flex-row basis-2/12">
+            <button
+                #menubutton
+                class="p-link text-orange-400 layout-menu-button layout-topbar-button"
+                (click)="layoutService.onMenuToggle()"
+            >
+                <i class="pi pi-bars text-2xl"></i>
+            </button>
 
-    <button #menubutton class="p-link layout-menu-button layout-topbar-button" (click)="layoutService.onMenuToggle()">
-        <i class="pi pi-bars"></i>
-    </button>
+            <a class="hidden layout-topbar-logo md:inline" routerLink="">
+                <img
+                    src="assets/layout/images/logo.svg"
+                    class="!hd-10 !w-full !max-w:full"
+                    alt="logo"
+                />
+            </a>
 
-    <button #topbarmenubutton class="p-link layout-topbar-menu-button layout-topbar-button" (click)="layoutService.showProfileSidebar()">
-        <i class="pi pi-ellipsis-v"></i>
-    </button>
+            <!-- <button #topbarmenubutton class="p-link layout-topbar-menu-button layout-topbar-button" (click)="layoutService.showProfileSidebar()">
+                <i class="pi pi-ellipsis-v"></i>
+            </button> -->
+        </div>
+        <!-- <div class=" mb-2 bg-d-300  basis-2/12 lg:mb-0">
+            <p >Deliver to</p>
+            <div class="flex space-x-3 flex-row items-center">
+                <p>Yaba, Lagos</p>
+                <i class="pi pi-user"></i>
+            </div>
+        </div> -->
 
-    <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
-        <button class="p-link layout-topbar-button">
-            <i class="pi pi-calendar"></i>
-            <span>Calendar</span>
-        </button>
-        <button class="p-link layout-topbar-button">
-            <i class="pi pi-user"></i>
-            <span>Profile</span>
-        </button>
-        <button class="p-link layout-topbar-button" [routerLink]="'/documentation'">
-            <i class="pi pi-cog"></i>
-            <span>Settings</span>
-        </button>
+        <div class="flex flex-col basis-7/12 md:basis-2/12 md:space-y-2">
+            <p class="text-xs font-light">Deliver to</p>
+            <div class="flex flex-row items-center space-x-2">
+                <p class="font-semibold text-base text-black">Yaba, Lagos</p>
+                <i class="pi pi-caret-down text-orange-400"></i>
+            </div>
+        </div>
+        <div class="hidden md:flex basis-5/12">
+            <span class="p-input-icon-left w-full">
+                <i class="pi pi-search"></i>
+                <input
+                    type="text"
+                    class="w-full border-0 bg-slate-100"
+                    pInputText
+                    placeholder="Looking for something amazing?"
+                />
+            </span>
+        </div>
+
+        <div
+            #topbarmenu
+            class="layout-topbar-menu basis-2/12 justify-between space-x-3"
+            [ngClass]="{
+                'layout-topbar-menu-mobile-active':
+                    layoutService.state.profileSidebarVisible
+            }"
+        >
+            <button class="flex flex-col items-center">
+                <i class="pi pi-home text-xl text-orange-500"></i>
+                <span class="text-orange-500 text-sm">Home</span>
+            </button>
+            <button class="flex flex-col items-center">
+                <i class="pi pi-file text-xl text-gray-500"></i>
+                <span class="text-gray-500 text-sm">Orders</span>
+            </button>
+            <button
+                class="flex flex-col items-center"
+                [routerLink]="'/documentation'"
+            >
+                <i class="pi pi-table text-xl text-gray-500"></i>
+                <span class="text-gray-500 text-sm">ezSocial</span>
+            </button>
+        </div>
+        <div
+            #topbarmenu2
+            class="layout-topbar-menu basis-2/12 px-4 justify-around space-x-2"
+            [ngClass]="{
+                'layout-topbar-menu-mobile-active':
+                    layoutService.state.profileSidebarVisible
+            }"
+        >
+            <button
+                class="!w-12 !h-12 border rounded-full items-center justify-center"
+            >
+                <i class="pi pi-bell text-xl text-black"></i>
+            </button>
+            <button
+                class="!w-12 !h-12 border rounded-full items-center justify-center"
+            >
+                <i class="pi pi-shopping-bag text-xl text-black"></i>
+            </button>
+        </div>
+        <div
+            style="justify-content: end"
+            (click)="display = true"
+            class="mb-2 cursor-pointer flex flex-row items-center !content-end space-x-2 basis-4/12 md:basis-2/12 lg:mb-0 hover:opacity-90"
+        >
+            <img
+                src="assets/demo/images/avatar/profile.jpg"
+                class="!w-10 !h-10 md:!h-14 md:!w-14 rounded-full"
+                alt="logo"
+            />
+            <p class="font-bold text-sm md:text-lg text-black">Login</p>
+            <i class="pi pi-chevron-down hidden md:inline"></i>
+        </div>
     </div>
+
+    <div
+        class="fixed top-16 z-40 shadow md:drop-shadow-none bg-white md:bg-slate-50 rounded-none p-4s py-4 left-0 right-0 md:hidden basis-5/12"
+    >
+        <span class="p-input-icon-left !ml-4 w-11/12 flex flex-1">
+            <i class="pi pi-search"></i>
+            <input
+                type="text"
+                class="flex-1 !rounded-2xl border-0 bg-slate-100"
+                pInputText
+                placeholder="Looking for something amazing?"
+            />
+        </span>
+    </div>
+</div>
+
+<div class="cdard">
+    <h5 class="font-bold text-black text-center">Log in</h5>
+    <p-dialog
+        [(visible)]="display"
+        [modal]="true"
+        showEffect="fade"
+        [style]="{ width: '25vw', height: '46rem' }"
+        [breakpoints]="{ '960px': '75vw' }"
+    >
+        <div class="flex flex-col space-y-6">
+            <p class="font-bold text-black text-xl text-center">Log in</p>
+            <div class="flex flex-col space-y-4">
+                <button
+                    class="w-full space-x-2 text-black font-semibold h-14 rounded-2xl border-1 border-gray-200"
+                >
+                    <i class="pi pi-search"></i>
+                    Continue with Facebook
+                </button>
+                <button
+                    class="w-full space-x-2 text-black font-semibold h-14 rounded-2xl border-1 border-gray-200"
+                >
+                    <i class="pi pi-search"></i>
+                    Continue with Google
+                </button>
+                <button
+                    class="w-full space-x-2 text-black font-semibold h-14 rounded-2xl border-1 border-gray-200"
+                >
+                    <i class="pi pi-search"></i>
+                    Continue with Apple
+                </button>
+                <div class="border-t my-4 relative border-gray-200">
+                    <span
+                        class="bg-white absolute -top-3 left-40 text-center w-14 h-6"
+                        >or</span
+                    >
+                </div>
+                <div class="flex flex-col space-y-4">
+                    <form class="flex flex-col space-y-4" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                        <div>
+                            <input
+                                formControlName="email"
+                                type="email"
+                                class="bg-slate-50 rounded-xl px-4 h-12 w-full placeholder:text-sm"
+                                placeholder="Email/Phone"
+                            />
+                        </div>
+                        <div>
+                            <input
+                                formControlName="password"
+                                type="password"
+                                class="bg-slate-50 rounded-xl px-4 h-12 w-full placeholder:text-sm"
+                                placeholder="Password"
+                            />
+                        </div>
+                        <div class="text-center">
+                            <p class="text-gray-400">
+                                Forgot password?
+                                <span class="text-orange-500">Reset it</span>
+                            </p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-black">Remember me</p>
+                        </div>
+                        <button
+                            [disabled]="loading"
+                            type="submit"
+                            class="w-full space-x-2 text-white font-semibold h-14 rounded-full border-1 bg-orange-400 disabled:opacity-40"
+                        >
+                            Log In
+                        </button>
+                        <div class="text-center">
+                            <p class="text-gray-400">
+                                Don’t have an account?
+                                <span class="text-orange-500">Sign up</span>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <ng-template pTemplate="footer">
+                <button
+                    pButton
+                    icon="pi pi-check"
+                    (click)="display = false"
+                    label="Ok"
+                    class="p-button-outlined"
+                ></button>
+            </ng-template>
+        </div>
+    </p-dialog>
+    <!-- <div class="grid">
+        <div class="col-12">
+            <button (click)="display=true" pButton icon="pi pi-external-link" label="Show"></button>
+        </div>
+    </div> -->
 </div>
